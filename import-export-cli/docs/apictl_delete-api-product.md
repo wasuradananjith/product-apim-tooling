@@ -13,8 +13,8 @@ apictl delete-api-product (--name <name-of-the-api-product> --provider <provider
 ### Examples
 
 ```
-apictl delete-api-product -n TwitterAPI -r admin -e dev
-apictl delete-api-product -n FacebookAPI -v 2.1.0 -e production
+apictl delete-api-product -n TwitterAPI -e dev
+apictl delete-api-product -n FacebookAPI -e production -r admin
 NOTE: Both the flags (--name (-n) and --environment (-e)) are mandatory.
 If the --provider (-r) is not specified, the logged-in user will be considered as the provider.
 ```
@@ -22,10 +22,10 @@ If the --provider (-r) is not specified, the logged-in user will be considered a
 ### Options
 
 ```
-  -e, --environment string   Environment from which the API should be deleted
+  -e, --environment string   Environment from which the API Product should be deleted
   -h, --help                 help for delete-api-product
-  -n, --name string          Name of the API to be deleted
-  -r, --provider string      Provider of the API
+  -n, --name string          Name of the API Product to be deleted
+  -r, --provider string      Provider of the API Product
 ```
 
 ### Options inherited from parent commands

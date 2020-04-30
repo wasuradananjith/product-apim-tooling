@@ -40,8 +40,8 @@ const deleteAPIProductCmdLiteral = "delete-api-product"
 const deleteAPIProductCmdShortDesc = "Delete API Product"
 const deleteAPIProductCmdLongDesc = "Delete an API Product from an environment"
 
-const deleteAPIProductCmdExamples = utils.ProjectName + ` ` + deleteAPIProductCmdLiteral + ` -n TwitterAPI -r admin -e dev
-` + utils.ProjectName + ` ` + deleteAPIProductCmdLiteral + ` -n FacebookAPI -v 2.1.0 -e production
+const deleteAPIProductCmdExamples = utils.ProjectName + ` ` + deleteAPIProductCmdLiteral + ` -n TwitterAPI -e dev
+` + utils.ProjectName + ` ` + deleteAPIProductCmdLiteral + ` -n FacebookAPI -e production -r admin
 NOTE: Both the flags (--name (-n) and --environment (-e)) are mandatory.
 If the --provider (-r) is not specified, the logged-in user will be considered as the provider.`
 
@@ -158,11 +158,11 @@ func getAPIProductId(accessToken string, credential credentials.Credential) (str
 func init() {
 	RootCmd.AddCommand(DeleteAPIProductCmd)
 	DeleteAPIProductCmd.Flags().StringVarP(&deleteAPIProductName, "name", "n", "",
-		"Name of the API to be deleted")
+		"Name of the API Product to be deleted")
 	DeleteAPIProductCmd.Flags().StringVarP(&deleteAPIProductProvider, "provider", "r", "",
-		"Provider of the API")
+		"Provider of the API Product")
 	DeleteAPIProductCmd.Flags().StringVarP(&deleteAPIProductEnvironment, "environment", "e",
-		"", "Environment from which the API should be deleted")
+		"", "Environment from which the API Product should be deleted")
 	// Mark required flags
 	_ = DeleteAPIProductCmd.MarkFlagRequired("name")
 	_ = DeleteAPIProductCmd.MarkFlagRequired("environment")
