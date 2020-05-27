@@ -173,6 +173,8 @@ func mergeAPI(apiDirectory string, environmentParams *params.Environment) error 
 		// Check whether the endpoint type is failover
 		if environmentParams.EndpointsList.EndpointType == "failover" {
 			environmentParams.EndpointsList.Failover = true
+			environmentParams.EndpointsList.Production, environmentParams.EndpointsList.ProductionFailovers = makeFailoverEndpointsList(environmentParams.EndpointsList.Production)
+			environmentParams.EndpointsList.Sandbox, environmentParams.EndpointsList.SandboxFailovers = makeFailoverEndpointsList(environmentParams.EndpointsList.Sandbox)
 		} else {
 			// If the endpoint type is load_balance make Failover false and
 			// make ProductionFailovers and SandboxFailovers nil if the user has mistakenly specify those
@@ -212,6 +214,16 @@ func mergeAPI(apiDirectory string, environmentParams *params.Environment) error 
 		return err
 	}
 	return nil
+}
+
+// makeFailoverEndpointsList constructs the lists which consists failover endpoints by seperating the primary endpoint
+func makeFailoverEndpointsList(endpointsList []params.Endpoint) ([]params.Endpoint, []params.Endpoint) {
+	numberOfEndpoints := len(endpointsList)
+	if numberOfEndpoints > 1 {
+		failoverEndpointsList := endpointsList[1:numberOfEndpoints]
+		return endpointsList[:1], failoverEndpointsList
+	}
+	return endpointsList, nil
 }
 
 // resolveImportFilePath resolves the archive/directory for import
