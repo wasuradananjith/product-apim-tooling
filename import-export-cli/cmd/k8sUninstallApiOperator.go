@@ -20,26 +20,27 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/spf13/cobra"
 	k8sUtils "github.com/wso2/product-apim-tooling/import-export-cli/operator/utils"
 	"github.com/wso2/product-apim-tooling/import-export-cli/utils"
-	"strings"
 )
 
-const uninstallApiOperatorCmdLiteral = "api-operator"
-const uninstallApiOperatorCmdShortDesc = "Uninstall API Operator"
-const uninstallApiOperatorCmdLongDesc = "Uninstall API Operator in the configured K8s cluster"
-const uninstallApiOperatorCmdExamples = utils.ProjectName + ` ` + uninstallCmdLiteral + ` ` + uninstallApiOperatorCmdLiteral + `
-` + utils.ProjectName + ` ` + uninstallCmdLiteral + ` ` + uninstallApiOperatorCmdLiteral + ` --force`
+const K8sUninstallApiOperatorCmdLiteral = "api-operator"
+const k8sUninstallApiOperatorCmdShortDesc = "Uninstall API Operator"
+const k8sUninstallApiOperatorCmdLongDesc = "Uninstall API Operator in the configured K8s cluster"
+const k8sUninstallApiOperatorCmdExamples = utils.ProjectName + ` ` + K8sCmdLiteral + ` ` + K8sUninstallCmdLiteral + ` ` + K8sUninstallApiOperatorCmdLiteral + `
+` + utils.ProjectName + ` ` + K8sCmdLiteral + ` ` + K8sUninstallCmdLiteral + ` ` + K8sUninstallApiOperatorCmdLiteral + ` --force`
 
 var flagForceUninstallApiOperator bool
 
 // uninstallApiOperatorCmd represents the uninstall api-operator command
 var uninstallApiOperatorCmd = &cobra.Command{
-	Use:     uninstallApiOperatorCmdLiteral,
-	Short:   uninstallApiOperatorCmdShortDesc,
-	Long:    uninstallApiOperatorCmdLongDesc,
-	Example: uninstallApiOperatorCmdExamples,
+	Use:     K8sUninstallApiOperatorCmdLiteral,
+	Short:   k8sUninstallApiOperatorCmdShortDesc,
+	Long:    k8sUninstallApiOperatorCmdLongDesc,
+	Example: k8sUninstallApiOperatorCmdExamples,
 	Run: func(cmd *cobra.Command, args []string) {
 		isConfirm := flagForceUninstallApiOperator
 

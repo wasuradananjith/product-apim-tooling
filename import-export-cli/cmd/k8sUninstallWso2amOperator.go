@@ -20,27 +20,28 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
+
 	k8sUtils "github.com/wso2/product-apim-tooling/import-export-cli/operator/utils"
 	"github.com/wso2/product-apim-tooling/import-export-cli/utils"
-	"strings"
 
 	"github.com/spf13/cobra"
 )
 
-const uninstallWso2amOperatorCmdLiteral = "wso2am-operator"
-const uninstallWso2amOperatorCmdShortDesc = "Uninstall WSO2AM Operator"
-const uninstallWso2amOperatorCmdLongDesc = "Uninstall WSO2AM Operator in the configured K8s cluster"
-const uninstallWso2amOperatorCmdExamples = utils.ProjectName + ` ` + uninstallCmdLiteral + ` ` + uninstallWso2amOperatorCmdLiteral + `
-` + utils.ProjectName + ` ` + uninstallCmdLiteral + ` ` + uninstallWso2amOperatorCmdLiteral + ` --force`
+const K8sUninstallWso2amOperatorCmdLiteral = "wso2am-operator"
+const k8sUninstallWso2amOperatorCmdShortDesc = "Uninstall WSO2AM Operator"
+const k8sUninstallWso2amOperatorCmdLongDesc = "Uninstall WSO2AM Operator in the configured K8s cluster"
+const k8sUninstallWso2amOperatorCmdExamples = utils.ProjectName + ` ` + K8sCmdLiteral + ` ` + K8sUninstallCmdLiteral + ` ` + K8sUninstallWso2amOperatorCmdLiteral + `
+` + utils.ProjectName + ` ` + K8sCmdLiteral + ` ` + K8sUninstallCmdLiteral + ` ` + K8sUninstallWso2amOperatorCmdLiteral + ` --force`
 
 var flagForceUninstallWso2amOperator bool
 
 // uninstallWso2amOperatorCmd represents the uninstallWso2amOperator command
 var uninstallWso2amOperatorCmd = &cobra.Command{
-	Use:     uninstallWso2amOperatorCmdLiteral,
-	Short:   uninstallWso2amOperatorCmdShortDesc,
-	Long:    uninstallWso2amOperatorCmdLongDesc,
-	Example: uninstallWso2amOperatorCmdExamples,
+	Use:     K8sUninstallWso2amOperatorCmdLiteral,
+	Short:   k8sUninstallWso2amOperatorCmdShortDesc,
+	Long:    k8sUninstallWso2amOperatorCmdLongDesc,
+	Example: k8sUninstallWso2amOperatorCmdExamples,
 	Run: func(cmd *cobra.Command, args []string) {
 		isConfirm := flagForceUninstallWso2amOperator
 
